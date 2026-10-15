@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מתנה מושלמת - הרשמה</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🌸 מתנה מושלמת</div>
+        <nav>
+            <a href="index.html">כניסה</a>
+            <a href="register.html" class="active">הרשמה</a>
+            <a href="catalog.html">קטלוג מתנות</a>
+            <a href="dashboard.html">ניהול ומעקב (מנהל)</a>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 600px;">
+        <div class="glass-card">
+            <h2>הרשמה למערכת המתנות</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">הזינו את הפרטים שלכם כדי שנוכל להתאים עבורכם את המתנות האידיאליות.</p>
+            
+            <form id="regForm">
+                <div class="form-group">
+                    <label>שם מלא</label>
+                    <input type="text" id="regName" required placeholder="שם פרטי ומשפחה">
+                </div>
+
+                <div class="form-group">
+                    <label>מין</label>
+                    <select id="regGender" required>
+                        <option value="boy">בן</option>
+                        <option value="girl">בת</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>קבוצת גיל</label>
+                    <select id="regAge" required>
+                        <option value="child">ילדים / ילדות</option>
+                        <option value="adult">בחורים / בחורות</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn">הירשם והצג מתנות</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('regForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newUser = {
+                name: document.getElementById('regName').value.trim(),
+                gender: document.getElementById('regGender').value,
+                ageGroup: document.getElementById('regAge').value
+            };
+
+            await DB.saveUser(newUser);
+            DB.setCurrentUser(newUser);
+            alert('ההרשמה בוצעה בהצלחה!');
+            window.location.href = 'catalog.html';
+        });
+    </script>
+</body>
+</html>

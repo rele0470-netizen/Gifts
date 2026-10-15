@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מתנה מושלמת - כניסה</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🌸 פינוק מסבא וסבתא</div>
+        <nav>
+            <a href="index.html" class="active">כניסה</a>
+            <a href="register.html">הרשמה</a>
+            <a href="catalog.html">קטלוג מתנות</a>
+            <a href="dashboard.html">ניהול ומעקב</a>
+        </nav>
+    </header>
+
+    <div class="container" style="max-width: 500px; margin-top: 50px;">
+        <div class="glass-card">
+            <h2>ברוכים הבאים לעולם המתנות</h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">הכניסו את שמכם כדי להיכנס לקטלוג המתנות.</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>שם מלא</label>
+                    <input type="text" id="loginName" required placeholder="הכנס את שמך המלא">
+                </div>
+                <button type="submit" class="btn">כניסה למערכת</button>
+            </form>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="register.html" style="color: #ff477e; text-decoration: none; font-weight: bold;">אין לכם חשבון עדיין? היכנסו להרשמה</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('loginName').value.trim();
+            if (!name) return;
+
+            var user = { name: name, gender: 'girl', ageGroup: 'adult' };
+            DB.saveUser(user);
+            DB.setCurrentUser(user);
+            window.location.href = 'catalog.html';
+        });
+    </script>
+</body>
+</html>

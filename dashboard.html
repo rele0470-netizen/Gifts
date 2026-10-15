@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מתנה מושלמת - ניהול ומעקב</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🌸 מתנה מושלמת - ניהול</div>
+        <nav>
+            <a href="catalog.html">קטלוג מתנות</a>
+            <a href="dashboard.html" class="active">ניהול ומעקב (מנהל)</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="glass-card">
+            <h2>מעקב אחר בחירות המשתמשים (ענן משותף)</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">כאן תוכל לראות בזמן אמת איזה מתנה כל משתמש בחר מכל מכשיר.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>שם המשתמש</th>
+                        <th>מין</th>
+                        <th>קבוצת גיל</th>
+                        <th>המתנה שנבחרה</th>
+                    </tr>
+                </thead>
+                <tbody id="choicesTableBody">
+                    <tr><td colspan="4" style="text-align: center;">טוען נתונים מהענן...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadDashboard() {
+            const users = await DB.getUsers();
+            const choices = await DB.getChoices();
+            const tbody = document.getElementById('choicesTableBody');
+            
+            tbody.innerHTML = '';
+
+            if(users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">טרם נרשמו משתמשים למערכת.</td></tr>';
+                return;
+            }
+
+            users.forEach(user => {
+                const tr = document.createElement('tr');
+                const selectedGift = choices[user.name] || 'טרם בחר מתנה';
+                const genderMap = { boy: 'בן', girl: 'בת' };
+                const ageMap = { child: 'ילדים / ילדות', adult: 'בחורים / בחורות' };
+
+                tr.innerHTML = `
+                    <td style="font-weight: bold; color: #6a1b9a;">${user.name}</td>
+                    <td>${genderMap[user.gender] || user.gender || '-'}</td>
+                    <td>${ageMap[user.ageGroup] || user.ageGroup || '-'}</td>
+                    <td style="color: ${choices[user.name] ? '#2e7d32' : '#c62828'}; font-weight: bold;">${selectedGift}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        loadDashboard();
+    </script>
+</body>
+</html>

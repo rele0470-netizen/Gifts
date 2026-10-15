@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>מתנה מושלמת - קטלוג מתנות</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">🌸 מתנה מושלמת</div>
+        <nav>
+            <span id="welcomeUser" style="color: #ff477e; margin-left: 20px; font-weight: bold;"></span>
+            <a href="catalog.html" class="active">קטלוג מתנות</a>
+            <a href="dashboard.html">ניהול ומעקב (מנהל)</a>
+            <a href="#" id="logoutBtn" style="color: #e53935;">התנתק</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="glass-card">
+            <h2>בחר את המתנה שלך</h2>
+            <p style="color: var(--text-muted);">המתנות מסוננות אוטומטית לפי הפרופיל שלך. ניתן גם לסנן ידנית לפי רצונך.</p>
+            
+            <div style="display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px;">
+                    <label>סנן לפי מין</label>
+                    <select id="filterGender">
+                        <option value="all">הצג הכל</option>
+                        <option value="boy">בן</option>
+                        <option value="girl">בת</option>
+                    </select>
+                </div>
+                <div style="flex: 1; min-width: 200px;">
+                    <label>סנן לפי קבוצת גיל</label>
+                    <select id="filterAge">
+                        <option value="all">הצג הכל</option>
+                        <option value="child">ילדים / ילדות</option>
+                        <option value="adult">בחורים / בחורות</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div id="giftsGrid" class="grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        var currentUser = DB.getCurrentUser();
+        
+        if (!currentUser) {
+            window.location.href = 'index.html';
+        } else {
+            document.getElementById('welcomeUser').textContent = 'שלום, ' + currentUser.name;
+            if (currentUser.gender) document.getElementById('filterGender').value = currentUser.gender;
+            if (currentUser.ageGroup) document.getElementById('filterAge').value = currentUser.ageGroup;
+            renderGifts();
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            DB.logout();
+            window.location.href = 'index.html';
+        });
+
+        function renderGifts() {
+            var gifts = DB.getGifts();
+            var fGender = document.getElementById('filterGender').value;
+            var fAge = document.getElementById('filterAge').value;
+            var grid = document.getElementById('giftsGrid');
+            
+            grid.innerHTML = '';
+
+            var filtered = gifts.filter(function(g) {
+                var matchGender = (fGender === 'all' || g.category === fGender);
+                var matchAge = (fAge === 'all' || g.ageGroup === fAge);
+                return matchGender && matchAge;
+            });
+
+            var displayList = filtered.length > 0 ? filtered : gifts;
+
+            for (var i = 0; i < displayList.length; i++) {
+                var gift = displayList[i];
+                var card = document.createElement('div');
+                card.className = 'item-card';
+                
+                var imgHtml = gift.img 
+                    ? '<img src="' + gift.img + '" alt="' + gift.name + '" class="item-img" onerror="this.style.display=\'none\'">' 
+                    : '';
+
+                card.innerHTML = 
+                    imgHtml +
+                    '<div class="item-content">' +
+                        '<div>' +
+                            '<h3 style="margin-bottom: 8px;">' + gift.name + '</h3>' +
+                            '<p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5;">' + gift.desc + '</p>' +
+                        '</div>' +
+                        '<button class="btn" onclick="selectGift(\'' + gift.name + '\')">בחר מתנה זו</button>' +
+                    '</div>';
+                
+                grid.appendChild(card);
+            }
+        }
+
+        function selectGift(giftName) {
+            DB.saveGiftChoice(currentUser.name, giftName);
+        }
+
+        document.getElementById('filterGender').addEventListener('change', renderGifts);
+        document.getElementById('filterAge').addEventListener('change', renderGifts);
+    </script>
+</body>
+</html>
