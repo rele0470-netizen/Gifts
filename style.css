@@ -858,3 +858,22 @@ body {
         animation: none;
     }
 }
+
+.nav-link-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.nav-link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 117, 140, 0.4);
+}
