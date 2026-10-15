@@ -4,239 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>קיר התודות לסבא וסבתא 💖</title>
-  <header style="text-align: center; padding: 20px 0; background-color: #ffffff; border-bottom: 2px solid #ffeaa7; margin-bottom: 30px;">
-  <h1 style="margin: 0 0 10px 0; color: #4a4a4a; font-size: 1.8rem;">💖 קיר התודות לסבא וסבתא</h1>
-  <a href="index.html" class="nav-link-btn" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);">
-    🎁 חזרה לחנות המתנות
-  </a>
-</header>
-  
-  <style>
-    :root {
-      --pastel-bg: #fffbf2;
-      --card-bg: #ffffff;
-      --accent-purple: #8e44ad;
-      --accent-pink: #ff6b81;
-      --text-color: #4a4a4a;
-      --border-color: #ffeaa7;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--pastel-bg);
-      background-image: radial-gradient(#e0d5c1 1px, transparent 1px);
-      background-size: 16px 16px;
-      color: var(--text-color);
-      margin: 0;
-      padding: 20px;
-      direction: rtl;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* טופס השליחה */
-    .form-card {
-      background: #ffffff;
-      border: 2px solid #f8c291;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      margin-bottom: 40px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #6c5ce7;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px;
-      border: 2px solid #ffeaa7;
-      border-radius: 12px;
-      font-size: 1rem;
-      box-sizing: border-box;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    .form-control:focus {
-      border-color: var(--accent-pink);
-    }
-
-    textarea.form-control {
-      height: 100px;
-      resize: vertical;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(135deg, #ff758c 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      padding: 14px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-radius: 25px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
-    }
-
-    /* כותרת הקיר */
-    .wall-header {
-      border-bottom: 2px dashed #f8c291;
-      padding-bottom: 10px;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .wall-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #333;
-      margin: 0;
-    }
-
-    .count-badge {
-      background-color: #ff758c;
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-
-    /* גריד הכרטיסיות */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .thank-card {
-      background: white;
-      border: 2px solid #ffeaa7;
-      border-radius: 16px;
-      padding: 18px;
-      position: relative;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-    }
-
-    .author-info .name {
-      font-weight: bold;
-      font-size: 1.05rem;
-      color: #2d3436;
-    }
-
-    .author-info .role {
-      font-size: 0.85rem;
-      color: #d63031;
-      background: #ffeaa7;
-      padding: 2px 8px;
-      border-radius: 10px;
-      display: inline-block;
-      margin-top: 3px;
-    }
-
-    .card-date {
-      font-size: 0.75rem;
-      color: #b2bec3;
-    }
-
-    .card-text {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #2d3436;
-      margin: 15px 0;
-      white-space: pre-line;
-    }
-
-    .card-footer {
-      border-top: 1px solid #f1f2f6;
-      padding-top: 10px;
-      font-size: 0.8rem;
-      color: #ff758c;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- כותרת עליונה -->
+  <header>
+    <div class="logo">
+      <span>💖</span> קיר התודות לסבא וסבתא
+    </div>
+    <nav>
+      <a href="index.html" class="nav-link-btn">🎁 חזרה לדף המתנות</a>
+    </nav>
+  </header>
+
   <div class="container">
     
-    <!-- טופס הוספת תודה -->
-    <div class="form-card">
+    <!-- טופס שליחת תודה בתוך כרטיסיית זכוכית -->
+    <div class="glass-card">
+      <h2 style="margin-top: 0; text-align: center;">השאירו מכתב תודה לסבא וסבתא ✨</h2>
       <form id="thanksForm">
         <div class="form-group">
-          <input type="text" id="authorName" class="form-control" placeholder="שם הנכד/ה..." required>
+          <label for="authorName">שם הנכד/ה:</label>
+          <input type="text" id="authorName" placeholder="הכניסו את שמכם..." required>
         </div>
         <div class="form-group">
-          <textarea id="messageText" class="form-control" placeholder="תודה רבה סבתא וסבא היקרים על המתנה הנפלאה! אוהב/ת המון..." required></textarea>
+          <label for="messageText">ההודעה שלכם:</label>
+          <textarea id="messageText" placeholder="תודה רבה סבתא וסבא היקרים על המתנה הנפלאה! אוהב/ת המון..." required></textarea>
         </div>
-        <button type="submit" class="btn-submit">שליחת מכתב התודה לסבתא ✨</button>
+        <button type="submit" class="btn">שליחת מכתב התודה לסבתא 🚀</button>
       </form>
     </div>
 
     <!-- כותרת הקיר -->
-    <div class="wall-header">
-      <span class="count-badge" id="msgCount">0 הודעות</span>
-      <h2 class="wall-title">קיר התודות לסבתא (כל ההודעות שנשלחו)</h2>
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px;">
+      <h2>קיר התודות לסבתא (כל ההודעות שנשלחו)</h2>
+      <span id="msgCount" style="background: linear-gradient(135deg, #ff609b, #ff91b8); color: white; padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(255, 96, 155, 0.25);">0 הודעות</span>
     </div>
 
-    <!-- רשימת הכרטיסיות -->
-    <div class="cards-grid" id="cardsGrid"></div>
+    <!-- רשימת הכרטיסיות (מתלבש בדיוק על ה-Grid של האתר) -->
+    <div class="grid" id="cardsGrid"></div>
 
   </div>
 
   <script>
     // טעינת הודעות שמורות בזיכרון המקומי (LocalStorage)
-    let messages = JSON.parse(localStorage.getItem('grandparents_thanks')) || [
-      {
-        id: 1,
-        name: "רבקה ישראלי",
-        role: "נכד/ה אהוב/ה",
-        date: "18:11, 15.10.2026",
-        text: "תודה!!!",
-        icon: "💐"
-      },
-      {
-        id: 2,
-        name: "מירי קליין",
-        role: "נכד/ה אהוב/ה",
-        date: "14:27, 14.10.2026",
-        text: "תודה!!",
-        icon: "💐"
-      }
-    ];
+    let messages = JSON.parse(localStorage.getItem('grandparents_thanks')) || [];
 
     const form = document.getElementById('thanksForm');
     const cardsGrid = document.getElementById('cardsGrid');
@@ -246,26 +59,48 @@
       cardsGrid.innerHTML = '';
       msgCount.textContent = `${messages.length} הודעות`;
 
+      if (messages.length === 0) {
+        cardsGrid.innerHTML = `
+          <div class="glass-card" style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">
+            <h3>עדיין אין הודעות על הקיר 💌</h3>
+            <p>היו הראשונים לשלוח מכתב תודה מרגש לסבא וסבתא באמצעות הטופס למעלה!</p>
+          </div>
+        `;
+        return;
+      }
+
       messages.forEach(msg => {
         const card = document.createElement('div');
-        card.className = 'thank-card';
+        card.className = 'item-card';
         card.innerHTML = `
-          <div>
-            <div class="card-top">
-              <span class="card-date">${msg.date}</span>
-              <div class="author-info" style="text-align: left;">
-                <span class="name">${msg.name} ${msg.icon || '💐'}</span><br>
-                <span class="role">${msg.role}</span>
+          <div class="item-content">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.85rem; color: #8e7fb0;">
+                <span>📅 ${msg.date}</span>
+                <span style="background: #f7effb; padding: 4px 10px; border-radius: 10px; color: #7040a0; font-weight: bold;">נכד/ה אהוב/ה 💐</span>
               </div>
+              <h3 style="margin-bottom: 8px; color: #563b7b;">${escapeHtml(msg.name)}</h3>
+              <p style="white-space: pre-line; color: #554d65; line-height: 1.6;">${escapeHtml(msg.text)}</p>
             </div>
-            <div class="card-text">${msg.text}</div>
-          </div>
-          <div class="card-footer">
-            נשלח בהמון אהבה ❤️
+            <div style="border-top: 1px solid #f0e7f4; margin-top: 15px; padding-top: 12px; text-align: left; font-size: 0.85rem; color: #ff609b; font-weight: 700;">
+              נשלח בהמון אהבה ❤️
+            </div>
           </div>
         `;
         cardsGrid.appendChild(card);
       });
+    }
+
+    // פונקציית עזר למניעת בעיות אבטחה בטקסט
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
     }
 
     // הוספת הודעה חדשה
@@ -281,10 +116,8 @@
       const newMessage = {
         id: Date.now(),
         name: nameInput,
-        role: "נכד/ה אהוב/ה",
         date: formattedDate,
-        text: textInput,
-        icon: "✨"
+        text: textInput
       };
 
       messages.unshift(newMessage); // הוספה לראש הרשימה
@@ -294,7 +127,7 @@
       form.reset();
     });
 
-    // הרצה ראשונית
+    // טעינה ראשונית
     renderMessages();
   </script>
 </body>
